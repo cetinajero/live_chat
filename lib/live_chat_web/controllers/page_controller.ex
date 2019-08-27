@@ -3,6 +3,12 @@ defmodule LiveChatWeb.PageController do
   alias LiveChat.MagicLinks
 
   def index(conn, _params) do
+    case get_session(conn, :user) do
+      nil ->
+        live_render(conn, LiveChatWeb.ConnectLive, session: %{})
+      user ->
+        live_render(conn, LiveChatWeb.ChatLive, session: %{user: user})
+    end
     render(conn, "index.html")
   end
 

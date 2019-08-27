@@ -1,14 +1,16 @@
 defmodule LiveChatWeb.ChatLive do
   use Phoenix.LiveView
 
-  def mount(_params, socket) do
-    send(self(), :count)
-    {:ok, assign(socket, :count, 0)}
+  def mount(%{user: user}, socket) do
+    assigns = [
+      user: user
+    ]
+    {:ok, assign(socket, assigns)}
   end
 
   def render(assigns) do
     ~L"""
-    Count: <%= @count %>
+    <div class="fullscreen">Welcome to chat, <%= @user.name%>!</div>
     """
   end
 
