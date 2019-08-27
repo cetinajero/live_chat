@@ -14,7 +14,7 @@ defmodule LiveChatWeb.ConnectLive do
   def render(%{name: name} = assigns)do
       ~L"""
       <div class="fullscreen">
-        Welcome, <%= @name %>
+        Welcome, <%= @name %>!
       </div>
       """
   end
