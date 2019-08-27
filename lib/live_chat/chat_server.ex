@@ -26,7 +26,7 @@ defmodule LiveChat.ChatServer do
 
   def handle_cast({:new_message, user, message}, %{messages: messages} = state) do
     messages = messages ++ [%{user: user, message: message}]
-    Phoenix.PubSub.broadcast(LiveChat.PubSub, "lobby", {:message, messages})
+    Phoenix.PubSub.broadcast(LiveChat.PubSub, "lobby", {:messages, messages})
     {:noreply, %{state | messages: messages}}
   end
 end

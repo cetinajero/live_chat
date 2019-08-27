@@ -35,8 +35,8 @@ defmodule LiveChatWeb.ChatLive do
           changeset: message_changeset()
         ]
         {:noreply, assign(socket, assigns)}
-        %{valid?: false} = changeset ->
-          {:noreply, assign(socket, :changeset, changeset)}
+      %{valid?: false} = changeset ->
+        {:noreply, assign(socket, :changeset, changeset)}
     end
   end
 
